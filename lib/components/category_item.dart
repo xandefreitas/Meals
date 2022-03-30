@@ -7,11 +7,7 @@ class CategoryItem extends StatelessWidget {
   const CategoryItem({Key? key, required this.category}) : super(key: key);
 
   void _selectCategory(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => CategoriesMealsScreen(category: category),
-      ),
-    );
+    Navigator.of(context).pushNamed('/categoriesMeals', arguments: category);
   }
 
   @override
