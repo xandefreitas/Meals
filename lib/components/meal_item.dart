@@ -33,8 +33,64 @@ class MealItem extends StatelessWidget {
                     width: double.maxFinite,
                     fit: BoxFit.cover,
                   ),
-                )
+                ),
+                Positioned(
+                  right: 0,
+                  bottom: 8,
+                  child: Container(
+                    width: 300,
+                    color: Colors.black54,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 4,
+                      horizontal: 16,
+                    ),
+                    child: Text(
+                      meal.title,
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
+                    ),
+                  ),
+                ),
               ],
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.schedule),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text('${meal.duration} min'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.work),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text(meal.complexityText),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.attach_money),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text(meal.costText),
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         ),
