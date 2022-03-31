@@ -34,6 +34,18 @@ class MyApp extends StatelessWidget {
         AppRoutes.CATEGORIES_MEALS: (ctx) => const CategoriesMealsScreen(),
         AppRoutes.MEAL_DETAIL: (ctx) => const MealDetailScreen(),
       },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/rota') {
+          return null;
+        } else if (settings.name == '/rota_alternativa') {
+          return null;
+        } else {
+          return MaterialPageRoute(builder: (_) => const CategoriesScreen());
+        }
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (_) => const CategoriesScreen());
+      },
     );
   }
 }
