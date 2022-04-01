@@ -21,10 +21,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Settings settings = Settings();
   List<Meal> _availableMeals = DUMMY_MEALS;
 
   void _filterMeals(Settings settings) {
     setState(() {
+      this.settings = settings;
       _availableMeals = DUMMY_MEALS.where((meal) {
         final filterGluten = settings.isGlutenFree && !meal.isGlutenFree;
         final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
@@ -59,7 +61,7 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.HOME: (ctx) => const TabsScreen(),
         AppRoutes.CATEGORIES_MEALS: (ctx) => CategoriesMealsScreen(meals: _availableMeals),
         AppRoutes.MEAL_DETAIL: (ctx) => const MealDetailScreen(),
-        AppRoutes.SETTINGS: (ctx) => SettingsScreen(onSettingsChanged: _filterMeals),
+        AppRoutes.SETTINGS: (ctx) => SettingsScreen(onSettingsChanged: _filterMeals, settings: settings),
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/rota') {

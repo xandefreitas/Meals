@@ -4,10 +4,11 @@ import 'package:flutter_meals/models/settings.dart';
 
 class SettingsScreen extends StatefulWidget {
   final Function(Settings) onSettingsChanged;
-
+  final Settings settings;
   const SettingsScreen({
     Key? key,
     required this.onSettingsChanged,
+    required this.settings,
   }) : super(key: key);
 
   @override
@@ -15,7 +16,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  Settings settings = Settings();
+  late Settings settings;
 
   Widget _createSwitch(String title, String subtitle, bool value, Function(bool) onChanged) {
     return SwitchListTile.adaptive(
@@ -26,6 +27,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
           onChanged(value);
           widget.onSettingsChanged(settings);
         });
+  }
+
+  @override
+  void initState() {
+    settings = widget.settings;
+    super.initState();
   }
 
   @override
