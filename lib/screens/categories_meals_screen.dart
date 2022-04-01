@@ -4,8 +4,8 @@ import 'package:flutter_meals/models/category.dart';
 import 'package:flutter_meals/models/meal.dart';
 
 class CategoriesMealsScreen extends StatelessWidget {
-  List<Meal> meals;
-  CategoriesMealsScreen({Key? key, required this.meals}) : super(key: key);
+  final List<Meal> meals;
+  const CategoriesMealsScreen({Key? key, required this.meals}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
